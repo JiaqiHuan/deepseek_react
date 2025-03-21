@@ -68,7 +68,7 @@ export default function MetallurgyAI() {
     setError("");
 
     try {
-      const response = await fetch("http://127.0.0.1/chat", {
+      const response = await fetch("http://127.0.0.1/api/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
