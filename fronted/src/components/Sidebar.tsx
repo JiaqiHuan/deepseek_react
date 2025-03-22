@@ -4,7 +4,8 @@ import styled from "styled-components";
 const SidebarContainer = styled.div`
   width: 250px;
    min-width: 250px;
-  height: 100vh;
+    min-height: 100vh;
+  height: auto;
   background: #121212;
   color: white;
   display: flex;

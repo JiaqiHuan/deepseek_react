@@ -34,7 +34,8 @@ const MenuButton = styled.button`
   color: white;
   cursor: pointer;
   transition: 0.3s;
-
+  position: relative;
+  left: -25px;  /* 👈 让按钮向左移动 5px */
   &:hover {
     color: ${theme.colors.neonBlue};
   }

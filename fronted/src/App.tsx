@@ -25,6 +25,9 @@ const Content = styled.div`
   flex-grow: 1;
   padding: 20px;
 `;
+const MobileContentWrapper = styled.div`
+  padding-top: 60px; /* 确保内容不会被 Navbar 盖住 */
+`;
 
 export default function App() {
   const isMobile = useMediaQuery({ maxWidth: 768 });
@@ -35,6 +38,7 @@ export default function App() {
         // 📱 手机端：带顶部导航栏的 APP 风格首页
         <>
           <MobileNavbar /> {/* 📌 添加移动端导航栏 */}
+          <MobileContentWrapper>
           <Routes>
             <Route path="/" element={<MobileHome />} />
             <Route path="/dashboard" element={<Dashboard />} />
@@ -48,6 +52,7 @@ export default function App() {
             <Route path="/production-optimizer" element={<ProductionOptimizer />} />
             <Route path="/power-fire-guard" element={<PowerFireGuard />} />
           </Routes>
+          </MobileContentWrapper>
         </>
       ) : (
         // 💻 PC 端：标准布局
