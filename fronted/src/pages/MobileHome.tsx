@@ -1,15 +1,18 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import Dashboard from "./Dashboard"; // 📌 引入 PC 端首页内容
 
 // 📌 页面容器
 const PageContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 60px; /* 🔹 确保内容不会被导航栏挡住 */
   padding: 20px;
 `;
 
-// 📌 标题样式
+
+// 📌 标题
 const Title = styled.h2`
   font-size: 24px;
   font-weight: bold;
@@ -17,16 +20,16 @@ const Title = styled.h2`
   color: #333;
 `;
 
-// 📌 宫格容器
+// 📌 宫格导航
 const GridContainer = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 25px; /* 增大间距 */
+  gap: 25px;
   width: 100%;
-  max-width: 400px; /* 限制最大宽度 */
+  max-width: 400px;
 `;
 
-// 📌 每个功能块
+// 📌 功能块
 const FeatureCard = styled.div`
   display: flex;
   flex-direction: column;
@@ -37,28 +40,28 @@ const FeatureCard = styled.div`
   border-radius: 15px;
   cursor: pointer;
   transition: 0.3s;
-  
+
   &:hover {
     background: #e0e0e0;
     transform: scale(1.05);
   }
 `;
 
-// 📌 图标样式
+// 📌 图标
 const Icon = styled.img`
   width: 60px;
   height: 60px;
   margin-bottom: 10px;
 `;
 
-// 📌 文本样式
+// 📌 文字
 const Label = styled.div`
   font-size: 16px;
   font-weight: bold;
   color: #555;
 `;
 
-// 📌 页面数据
+// 📌 功能列表
 const features = [
   { name: "智能冶金", path: "/smart-steel", icon: "/icons/steel.png" },
   { name: "气体分析", path: "/gas-analysis", icon: "/icons/gas.png" },
@@ -85,6 +88,9 @@ export default function MobileHome() {
           </FeatureCard>
         ))}
       </GridContainer>
+
+      {/* 📌 PC 端首页内容 */}
+      <Dashboard />
     </PageContainer>
   );
 }

@@ -1,46 +1,10 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+//import styled from "styled-components";
 import { 
   LineChart, Line, XAxis, YAxis, Tooltip, Legend, ReferenceLine, ResponsiveContainer 
 } from "recharts";
+import { Container, ChartsContainer,ChartBox,Alert,SuggestionBox} from "../styles";
 
-const Container = styled.div`
-  padding: 20px;
-`;
-
-const ChartsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-`;
-
-const ChartBox = styled.div`
-  flex: 1;
-  min-width: 300px;
-  background: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-`;
-
-const Alert = styled.div<{ level: string }>`
-  padding: 10px;
-  border-radius: 5px;
-  background: ${({ level }) =>
-    level === "normal" ? "#28a745" :
-    level === "warning" ? "#ffc107" :
-    "#dc3545"};
-  color: white;
-  margin-bottom: 15px;
-`;
-
-const SuggestionBox = styled.div`
-  background: #333;
-  padding: 10px;
-  border-radius: 5px;
-  color: #ddd;
-  margin-top: 10px;
-`;
 
 export default function GasAnalysis() {
   const [data, setData] = useState([
@@ -170,6 +134,8 @@ export default function GasAnalysis() {
       </Alert>
 
       {/* 工艺调整建议 */}
+      
+
       <h2>🛠️ 工艺调整建议</h2>
       {suggestions.map((s, index) => <SuggestionBox key={index}>{s}</SuggestionBox>)}
     </Container>

@@ -1,152 +1,125 @@
-import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ReferenceLine, ResponsiveContainer, BarChart, Bar, PieChart, Pie, Cell } from "recharts";
 
-// 📌 组件样式
+// 📌 主页整体样式
 const Container = styled.div`
   padding: 20px;
+  max-width: 1200px;
+  margin: auto;
 `;
 
-const ChartsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
+// 📌 版块样式（PC 端分区排列，手机端纵向排列）
+const Section = styled.div`
+  margin-bottom: 30px;
+  @media (min-width: 768px) {
+    display: flex;
+    gap: 20px;
+  }
 `;
 
-const ChartBox = styled.div`
-  flex: 1;
-  min-width: 300px;
-  background: #1e1e1e;
+// 📌 KPI 概览容器
+const KPIContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 30px;
+  margin-bottom: 30px;
+`;
+
+// 📌 每个 KPI 面板
+const KPIBox = styled.div`
   padding: 15px;
+  background: #f8f9fa;
   border-radius: 10px;
-  color: white;
-`;
-
-const WarningBox = styled.div`
-  background: #ff4444;
-  color: white;
-  padding: 10px;
-  border-radius: 5px;
-  margin-top: 10px;
+  text-align: center;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+  font-size: 16px;
   font-weight: bold;
 `;
 
-export default function Dashboard() {
-  // 📌 状态管理（模拟实时数据）
-  const [data, setData] = useState([
-    { time: "10:00", temp: 1150, CO2: 0.04, SO2: 0.002, NOx: 0.01, oxygen: 20.9, thickness: 5.2, width: 1500 },
-    { time: "10:05", temp: 1170, CO2: 0.045, SO2: 0.003, NOx: 0.012, oxygen: 20.5, thickness: 5.1, width: 1498 },
-    { time: "10:10", temp: 1180, CO2: 0.05, SO2: 0.004, NOx: 0.015, oxygen: 20.3, thickness: 5.0, width: 1497 },
-  ]);
+// 📌 生产监控 & AI 推荐 & 新闻速递面板
+const Panel = styled.div<{ bg?: string }>`
+  flex: 1;
+  padding: 20px;
+  background: ${(props) => props.bg || "#fff"};
+  border-radius: 10px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+`;
 
-  const [warnings, setWarnings] = useState<string[]>([]);
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      const newEntry = {
-        time: new Date().toLocaleTimeString().slice(0, 5),
-        temp: Math.random() * 50 + 1100,
-        CO2: Math.random() * 0.02 + 0.04,
-        SO2: Math.random() * 0.002 + 0.002,
-        NOx: Math.random() * 0.005 + 0.01,
-        oxygen: Math.random() * 2 + 19,
-        thickness: Math.random() * 0.3 + 5.0,
-        width: Math.random() * 5 + 1495,
-      };
+// 📌 新闻列表样式
+const NewsList = styled.ul`
+  padding: 0;
+  list-style: none;
+`;
 
-      setData(prevData => [...prevData.slice(-5), newEntry]);
+const NewsItem = styled.li`
+  margin-bottom: 10px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: 0.3s;
 
-      let newWarnings: string[] = [];
-      if (newEntry.temp > 1200) newWarnings.push("🔥 炉温过高，建议降低加热功率！");
-      if (newEntry.CO2 > 0.05) newWarnings.push("⚠️ CO₂ 浓度超标，可能需要调整燃烧参数！");
-      if (newEntry.NOx > 0.015) newWarnings.push("⚠️ NOx 排放超标，请检查燃烧优化！");
-      if (newEntry.oxygen < 19.5) newWarnings.push("⚠️ 氧气浓度过低，可能影响燃烧效率！");
-      if (newEntry.thickness < 4.8) newWarnings.push("⚠️ 钢材厚度过薄，调整轧制参数！");
-      if (newEntry.width < 1495) newWarnings.push("⚠️ 钢材宽度异常，请检查设备状态！");
+  &:hover {
+    background: #f1f1f1;
+  }
+`;
 
-      setWarnings(newWarnings);
-    }, 2000);
+// 📌 模拟新闻数据
+const newsData = [
+  { id: 1, title: "🔥 全球钢铁市场需求增长 5%", link: "#" },
+  { id: 2, title: "⚙️ AI 赋能智能排产，提升 15% 效率", link: "#" },
+  { id: 3, title: "🌱 低碳冶炼新突破，碳排放降低 10%", link: "#" },
+];
 
-    return () => clearInterval(interval);
-  }, []);
-
+export default function HomePage() {
   return (
     <Container>
-      <h1>📊 智能冶金系统概览</h1>
+      <h1>📊 系统概览</h1>
 
-      {/* 🚨 警告信息 */}
-      {warnings.length > 0 && warnings.map((w, index) => <WarningBox key={index}>{w}</WarningBox>)}
+      {/* 1️⃣ 顶部概览面板（KPI） */}
+      <KPIContainer>
+        <KPIBox>📈 生产负荷: 80% / 100%</KPIBox>
+        <KPIBox>📦 订单完成率: 75%</KPIBox>
+        <KPIBox>🌍 碳排放: 1200吨</KPIBox>
+        <KPIBox>♻️ 废钢回收率: 85%</KPIBox>
+        <KPIBox>💰 钢材价格波动: +2.5%</KPIBox>
+        <KPIBox>⚠️ 供应链预警: 无</KPIBox>
+      </KPIContainer>
 
-      <ChartsContainer>
-        {/* 🔥 炉温趋势 */}
-        <ChartBox>
-          <h3>🔥 炉温趋势</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={data}>
-              <XAxis dataKey="time" />
-              <YAxis domain={[1100, 1250]} unit="℃" />
-              <Tooltip />
-              <Legend />
-              <ReferenceLine y={1200} stroke="red" label="🚨 超温" />
-              <Line type="monotone" dataKey="temp" stroke="#ff7300" />
-            </LineChart>
-          </ResponsiveContainer>
-        </ChartBox>
+      {/* 2️⃣ 生产计划 & 进度监控 */}
+      <Section>
+        <Panel bg="#f1f3f5">
+          <h2>📅 生产计划 & 进度监控</h2>
+          <p>🔹 生产进度: 订单 1（80%），订单 2（45%）...</p>
+          <p>⚙️ 关键瓶颈工序: 加热炉 - 负荷过高</p>
+          <p>⏳ 能耗趋势: 每日能耗 1200kWh</p>
+        </Panel>
+      </Section>
 
-        {/* 🌫️ 烟气成分 */}
-        <ChartBox>
-          <h3>🌫️ 烟气成分</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <LineChart data={data}>
-              <XAxis dataKey="time" />
-              <YAxis domain={[0, 0.06]} unit="%" />
-              <Tooltip />
-              <Legend />
-              <ReferenceLine y={0.05} stroke="red" label="⚠️ CO₂ 超标" />
-              <Line type="monotone" dataKey="CO2" stroke="green" name="CO₂" />
-              <Line type="monotone" dataKey="SO2" stroke="yellow" name="SO₂" />
-              <Line type="monotone" dataKey="NOx" stroke="blue" name="NOx" />
-            </LineChart>
-          </ResponsiveContainer>
-        </ChartBox>
+      {/* 3️⃣ 知识图谱 & AI 推荐 */}
+      <Section>
+        <Panel bg="#e3f2fd">
+          <h2>🤖 知识图谱 & AI 推荐</h2>
+          <p>🔹 碳排放优化: 采用更节能方案，预计减少 5% 排放</p>
+          <p>🔹 排产优化: AI 预测未来 3 天订单增长 10%</p>
+          <p>🔹 供应链调整: 采购调整建议 - 提前采购铁矿石</p>
+        </Panel>
+      </Section>
 
-        {/* 🍽️ 材料配比（饼图） */}
-        <ChartBox>
-          <h3>🍽️ 材料配比</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <PieChart>
-              <Pie data={[
-                { name: "废钢", value: 40 },
-                { name: "生铁", value: 35 },
-                { name: "合金", value: 25 }
-              ]} dataKey="value" cx="50%" cy="50%" outerRadius={80}>
-                <Cell fill="gray" />
-                <Cell fill="black" />
-                <Cell fill="gold" />
-              </Pie>
-              <Tooltip />
-              <Legend />
-            </PieChart>
-          </ResponsiveContainer>
-        </ChartBox>
-
-        {/* 📏 钢材厚度 & 宽度 */}
-        <ChartBox>
-          <h3>📏 钢材尺寸</h3>
-          <ResponsiveContainer width="100%" height={250}>
-            <BarChart data={data}>
-              <XAxis dataKey="time" />
-              <YAxis domain={[4.5, 5.5]} unit="mm" />
-              <Tooltip />
-              <Legend />
-              <ReferenceLine y={4.8} stroke="red" label="⚠️ 过薄" />
-              <Bar dataKey="thickness" fill="#8884d8" name="厚度" />
-              <ReferenceLine y={1495} stroke="red" label="⚠️ 过窄" />
-              <Bar dataKey="width" fill="#82ca9d" name="宽度" />
-            </BarChart>
-          </ResponsiveContainer>
-        </ChartBox>
-      </ChartsContainer>
+      {/* 4️⃣ 新闻速递 */}
+      <Section>
+        <Panel bg="#fff3cd">
+          <h2>📰 新闻速递</h2>
+          <NewsList>
+            {newsData.map((news) => (
+              <NewsItem key={news.id} onClick={() => window.open(news.link, "_blank")}>
+                {news.title}
+              </NewsItem>
+            ))}
+          </NewsList>
+        </Panel>
+      </Section>
     </Container>
   );
 }

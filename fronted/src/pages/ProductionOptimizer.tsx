@@ -1,61 +1,12 @@
 import{ useState, useEffect } from 'react';
-import styled from 'styled-components';
+//import styled from 'styled-components';
 import {
   LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer,
   BarChart, Bar, ScatterChart, Scatter, CartesianGrid
 } from 'recharts';
 
-// 📌 样式部分
-const Container = styled.div`
-  padding: 20px;
-  background-color: #121212;
-  color: white;
-`;
+import { Container, ChartsContainer,ChartBox,Table,Th,Td} from "../styles";
 
-const Section = styled.div`
-  margin-bottom: 40px;
-`;
-
-const Title = styled.h2`
-  color: #fff;
-  font-size: 24px;
-  margin-bottom: 20px;
-`;
-
-const ChartsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-`;
-
-const ChartBox = styled.div`
-  flex: 1;
-  min-width: 300px;
-  background: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  background: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-  margin-top: 10px;
-  border-collapse: collapse;
-  
-  th, td {
-    padding: 8px;
-    text-align: center;
-    border: 1px solid #333;
-  }
-
-  th {
-    background: #444;
-  }
-`;
 
 // 📌 示例数据
 const externalData = [
@@ -96,11 +47,11 @@ export default function FactorySchedulingSystem() {
 
   return (
     <Container>
-      <Title>工厂智能排产系统</Title>
+      <h1>工厂智能排产系统</h1>
 
       {/* 🔥 数据展示区域 */}
-      <Section>
-        <Title>📊 外部数据波动监控</Title>
+      {/* <Section> */}
+        <h2>📊 外部数据波动监控</h2>
         <ChartsContainer>
           {/* 大宗商品价格波动图 */}
           <ChartBox>
@@ -133,11 +84,11 @@ export default function FactorySchedulingSystem() {
             </ResponsiveContainer>
           </ChartBox>
         </ChartsContainer>
-      </Section>
+      {/* </Section> */}
 
       {/* 📈 生产趋势分析 */}
-      <Section>
-        <Title>📈 内部数据监控</Title>
+      {/* <Section> */}
+        <h2>📈 内部数据监控</h2>
         <ChartsContainer>
           {/* 排产计划 */}
           <ChartBox>
@@ -168,11 +119,11 @@ export default function FactorySchedulingSystem() {
             </ResponsiveContainer>
           </ChartBox>
         </ChartsContainer>
-      </Section>
+      {/* </Section> */}
 
       {/* 🧠 知识图谱 */}
-      <Section>
-        <Title>📚 知识图谱 & 专家系统</Title>
+      {/* <Section> */}
+        <h2>📚 知识图谱 & 专家系统</h2>
         <ChartBox>
           <h3>废钢回收与工序衔接</h3>
           <p>通过知识图谱挖掘潜在优化点，提升废钢回收与生产流程的关联性。</p>
@@ -186,11 +137,11 @@ export default function FactorySchedulingSystem() {
             </ScatterChart>
           </ResponsiveContainer>
         </ChartBox>
-      </Section>
+      {/* </Section> */}
 
       {/* 🔁 碳排放溯源与精益管控 */}
-      <Section>
-        <Title>🔁 碳排放溯源与精益管控</Title>
+      {/* <Section> */}
+        <h2>🔁 碳排放溯源与精益管控</h2>
         <ChartsContainer>
           {/* 碳排放趋势 */}
           <ChartBox>
@@ -220,42 +171,42 @@ export default function FactorySchedulingSystem() {
             </ResponsiveContainer>
           </ChartBox>
         </ChartsContainer>
-      </Section>
+      {/* </Section> */}
 
       {/* 表格显示生产数据 */}
-      <Section>
-        <Title>生产决策与优化目标</Title>
+      {/* <Section> */}
+        <h2>生产决策与优化目标</h2>
         <Table>
           <thead>
             <tr>
-              <th>日期</th>
-              <th>减员目标</th>
-              <th>综合利润提升</th>
-              <th>碳耗变化</th>
+              <Th>日期</Th>
+              <Th>减员目标</Th>
+              <Th>综合利润提升</Th>
+              <Th>碳耗变化</Th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>2023-03-01</td>
-              <td>已完成 50%</td>
-              <td>提升 10%</td>
-              <td>降低 5%</td>
+              <Td>2023-03-01</Td>
+              <Td>已完成 50%</Td>
+              <Td>提升 10%</Td>
+              <Td>降低 5%</Td>
             </tr>
             <tr>
-              <td>2023-03-02</td>
-              <td>已完成 60%</td>
-              <td>提升 12%</td>
-              <td>降低 7%</td>
+              <Td>2023-03-02</Td>
+              <Td>已完成 60%</Td>
+              <Td>提升 12%</Td>
+              <Td>降低 7%</Td>
             </tr>
             <tr>
-              <td>2023-03-03</td>
-              <td>已完成 70%</td>
-              <td>提升 15%</td>
-              <td>降低 8%</td>
+              <Td>2023-03-03</Td>
+              <Td>已完成 70%</Td>
+              <Td>提升 15%</Td>
+              <Td>降低 8%</Td>
             </tr>
           </tbody>
         </Table>
-      </Section>
+      {/* </Section> */}
     </Container>
   );
 }

@@ -1,42 +1,10 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { 
   LineChart, Line, XAxis, YAxis, Tooltip, Legend, ReferenceLine, ResponsiveContainer, 
   BarChart, Bar,
 } from "recharts";
+import { Container, ChartsContainer,ChartBox, SuggestionBox} from "../styles"; // 👈 导入样式
 
-const Container = styled.div`
-  padding: 20px;
-`;
-
-const ChartsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-`;
-
-const ChartRow = styled.div`
-  display: flex;
-  gap: 20px;
-  width: 100%;
-`;
-
-const ChartBox = styled.div`
-  flex: 1;
-  min-width: 300px;
-  background: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-`;
-
-const SuggestionBox = styled.div`
-  background: #333;
-  padding: 10px;
-  border-radius: 5px;
-  color: #ddd;
-  margin-top: 10px;
-`;
 
 export default function SmartSteel() {
   const [data, setData] = useState([
@@ -114,9 +82,9 @@ export default function SmartSteel() {
             </BarChart>
           </ResponsiveContainer>
         </ChartBox>
-      </ChartsContainer>
+      
 
-      <ChartRow>
+      {/* <ChartRow> */}
         <ChartBox>
           <h3>📏 钢材厚度</h3>
           <ResponsiveContainer width="100%" height={250}>
@@ -144,7 +112,8 @@ export default function SmartSteel() {
             </BarChart>
           </ResponsiveContainer>
         </ChartBox>
-      </ChartRow>
+        </ChartsContainer>
+      {/* </ChartRow> */}
 
       <h2>⚠️ 生产调整建议</h2>
       {suggestions.map((s, index) => <SuggestionBox key={index}>{s}</SuggestionBox>)}

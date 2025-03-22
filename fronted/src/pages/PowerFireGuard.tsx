@@ -1,46 +1,8 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
+//import styled from "styled-components";
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer, BarChart, Bar } from "recharts";
-const Container = styled.div`
-  padding: 20px;
-`;
+import { Container, ChartsContainer,ChartBox,Table,Th,Td} from "../styles";
 
-const ChartsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-`;
-
-const ChartBox = styled.div`
-  flex: 1;
-  min-width: 300px;
-  background: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-`;
-
-const Title = styled.h1`
-  text-align: center;
-  margin-bottom: 20px;
-`;
-
-const DataTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-
-  th, td {
-    padding: 10px;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
-
-  th {
-    background-color: #333;
-    color: white;
-  }
-`;
 
 // 模拟数据
 const initialData = [
@@ -71,31 +33,10 @@ export default function PowerFireGuard() {
 
   return (
     <Container>
-      <Title>🔥 电力火灾预防监测系统</Title>
+      <h1>🔥 电力火灾预防监测系统</h1>
 
       {/* 隐患诊断与溯源表格 */}
-      <DataTable>
-        <thead>
-          <tr>
-            <th>时间</th>
-            <th>温度 (℃)</th>
-            <th>电压 (V)</th>
-            <th>电流 (A)</th>
-            <th>状态</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.map((entry, index) => (
-            <tr key={index}>
-              <td>{entry.time}</td>
-              <td>{entry.temperature}</td>
-              <td>{entry.voltage}</td>
-              <td>{entry.current}</td>
-              <td>{entry.status}</td>
-            </tr>
-          ))}
-        </tbody>
-      </DataTable>
+      
 
       <ChartsContainer>
         {/* 电力设备状态 */}
@@ -127,6 +68,29 @@ export default function PowerFireGuard() {
           </ResponsiveContainer>
         </ChartBox>
       </ChartsContainer>
+      <Table>
+        <thead>
+          <tr>
+            <Th>时间</Th>
+            <Th>温度 (℃)</Th>
+            <Th>电压 (V)</Th>
+            <Th>电流 (A)</Th>
+            <Th>状态</Th>
+          </tr>
+        </thead>
+        <tbody>
+          {data.map((entry, index) => (
+            <tr key={index}>
+              <Td>{entry.time}</Td>
+              <Td>{entry.temperature}</Td>
+              <Td>{entry.voltage}</Td>
+              <Td>{entry.current}</Td>
+              <Td>{entry.status}</Td>
+            </tr>
+          ))}
+        </tbody>
+      </Table>
+
     </Container>
   );
 }

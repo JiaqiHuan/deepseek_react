@@ -29,7 +29,7 @@ export default function Sidebar() {
       <h2>冶金控制系统</h2>
       <MenuItem to="/">🏠 首页</MenuItem>
       <MenuItem to="/metallurgy-ai">🧠 冶金大语言系统</MenuItem>
-      <MenuItem to="/gas-analysis">🔥 烟气分析</MenuItem>
+      <MenuItem to="/gas-analysis">🔥 烟气分析 & 炉温监测</MenuItem>
       <MenuItem to="/smart-steel">⚙️ 智能炼钢</MenuItem>
       <MenuItem to="/crane-dispatch">📊 无人天车调度系统</MenuItem>
       <MenuItem to="/equipment-inspection">🔍 设备与原材料检测系统</MenuItem>

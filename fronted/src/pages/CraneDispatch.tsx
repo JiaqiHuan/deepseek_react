@@ -1,14 +1,10 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend } from "recharts";
+import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend ,ResponsiveContainer} from "recharts";
+import { Container, ChartsContainer,ChartBox} from "../styles";
 
-const Container = styled.div`
-  padding: 20px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
+
+
 
 const Canvas = styled.svg`
   width: 100%;
@@ -41,7 +37,7 @@ const TaskPanel = styled.div`
   padding: 15px;
   background: #333;
   border-radius: 10px;
-  width: 80%;
+  width: 98%;
 `;
 
 const TaskItem = styled.div`
@@ -51,14 +47,6 @@ const TaskItem = styled.div`
   border-radius: 5px;
 `;
 
-const Dashboard = styled.div`
-  margin-top: 20px;
-  padding: 15px;
-  background: #333;
-  border-radius: 10px;
-  width: 80%;
-  text-align: center;
-`;
 
 const FactoryLayout = styled.rect`
   fill: #555;
@@ -100,8 +88,8 @@ export default function CraneDispatch() {
 
   return (
     <Container>
-      <h1 style={{ color: "black" }}>无人天车调度系统</h1>
-      <h3 style={{ color: "black" }}>天车轨迹（俯视图）</h3>
+      <h1>无人天车调度系统</h1>
+      <h2>天车轨迹（俯视图）</h2>
       <Canvas viewBox="0 0 400 400">
         <FactoryLayout x="50" y="50" width="300" height="300" />
         <PathLine points={trajectory.map((p) => `${p.x},${p.y}`).join(" ")} />
@@ -111,26 +99,33 @@ export default function CraneDispatch() {
         </PositionText>
       </Canvas>
 
-      <TaskPanel>
-        <h3>📋 任务队列</h3>
+
+      <h2>📊 运行数据仪表盘</h2>
+      <ChartsContainer>
+        <ChartBox>
+          
+            <ResponsiveContainer width="100%" height={250}>
+            <LineChart width={600} height={300} data={speedData}>
+              <CartesianGrid strokeDasharray="3 3" />
+              <XAxis dataKey="time" />
+              <YAxis />
+              <Tooltip />
+              <Legend />
+              <Line type="monotone" dataKey="speed" stroke="#82ca9d" />
+            </LineChart>
+            </ResponsiveContainer>
+          </ChartBox>
+        </ChartsContainer>
+
+        <h2>📋 任务队列</h2>
+        <TaskPanel>
+        
         {taskQueue.map((task) => (
           <TaskItem key={task.id}>
             {task.name} - <strong>{task.status}</strong>
           </TaskItem>
         ))}
       </TaskPanel>
-
-      <Dashboard>
-        <h3>📊 运行数据仪表盘</h3>
-        <LineChart width={600} height={300} data={speedData}>
-          <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="time" />
-          <YAxis />
-          <Tooltip />
-          <Legend />
-          <Line type="monotone" dataKey="speed" stroke="#82ca9d" />
-        </LineChart>
-      </Dashboard>
     </Container>
   );
 }

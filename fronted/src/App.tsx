@@ -1,21 +1,22 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import styled from "styled-components";
 import Sidebar from "./components/Sidebar";
+import Navbar from "./components/Navbar";
+import MobileNavbar from "./components/MobileNavbar"; // 📌 新增移动端导航栏
 import Dashboard from "./pages/Dashboard";
 import GasAnalysis from "./pages/GasAnalysis";
 import SmartSteel from "./pages/SmartSteel";
 import CraneDispatch from "./pages/CraneDispatch";
-import Navbar from "./components/Navbar";
 import EquipmentInspection from "./pages/EquipmentInspection";
 import MetallurgyAI from "./pages/MetallurgyAI";
 import RollingControl from "./pages/RollingControl";
 import ConverterOptimizer from "./pages/ConverterOptimizer";
 import ProductionOptimizer from "./pages/ProductionOptimizer";
 import PowerFireGuard from "./pages/PowerFireGuard";
-import MobileHome from "./pages/MobileHome"; // 新增手机端首页
-import { useState, useEffect } from "react";
-import styled from "styled-components";
+import MobileHome from "./pages/MobileHome";
 
-// 📌 适配不同设备
+// 📌 PC 布局
 const Layout = styled.div`
   display: flex;
 `;
@@ -26,33 +27,30 @@ const Content = styled.div`
 `;
 
 export default function App() {
-  const [isMobile, setIsMobile] = useState(window.innerWidth <= 768); // 判断是否为手机端
-
-  // 监听窗口变化，动态适配
-  useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth <= 768);
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
+  const isMobile = useMediaQuery({ maxWidth: 768 });
 
   return (
     <Router>
       {isMobile ? (
-        // 📱 手机端：首页是 APP 风格导航
-        <Routes>
-          <Route path="/" element={<MobileHome />} />
-          <Route path="/gas-analysis" element={<GasAnalysis />} />
-          <Route path="/smart-steel" element={<SmartSteel />} />
-          <Route path="/crane-dispatch" element={<CraneDispatch />} />
-          <Route path="/equipment-inspection" element={<EquipmentInspection />} />
-          <Route path="/metallurgy-ai" element={<MetallurgyAI />} />
-          <Route path="/rolling-control" element={<RollingControl />} />
-          <Route path="/converter-optimizer" element={<ConverterOptimizer />} />
-          <Route path="/production-optimizer" element={<ProductionOptimizer />} />
-          <Route path="/power-fire-guard" element={<PowerFireGuard />} />
-        </Routes>
+        // 📱 手机端：带顶部导航栏的 APP 风格首页
+        <>
+          <MobileNavbar /> {/* 📌 添加移动端导航栏 */}
+          <Routes>
+            <Route path="/" element={<MobileHome />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/gas-analysis" element={<GasAnalysis />} />
+            <Route path="/smart-steel" element={<SmartSteel />} />
+            <Route path="/crane-dispatch" element={<CraneDispatch />} />
+            <Route path="/equipment-inspection" element={<EquipmentInspection />} />
+            <Route path="/metallurgy-ai" element={<MetallurgyAI />} />
+            <Route path="/rolling-control" element={<RollingControl />} />
+            <Route path="/converter-optimizer" element={<ConverterOptimizer />} />
+            <Route path="/production-optimizer" element={<ProductionOptimizer />} />
+            <Route path="/power-fire-guard" element={<PowerFireGuard />} />
+          </Routes>
+        </>
       ) : (
-        // 💻 PC 端：正常布局
+        // 💻 PC 端：标准布局
         <Layout>
           <Sidebar />
           <Content>

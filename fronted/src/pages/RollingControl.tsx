@@ -1,65 +1,6 @@
 import { useState, useEffect } from "react";
-import styled from "styled-components";
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ReferenceLine, ResponsiveContainer} from "recharts";
-
-// 📌 组件样式
-const Container = styled.div`
-  padding: 20px;
-  max-width: 1200px;
-  margin: auto;
-  text-align: center;
-`;
-
-const ChartsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-`;
-
-const ChartBox = styled.div`
-  flex: 1;
-  min-width: 300px;
-  background: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-`;
-
-const Table = styled.table`
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 10px;
-`;
-
-const Th = styled.th`
-  background: #007bff;
-  color: white;
-  padding: 10px;
-  border: 1px solid #ddd;
-`;
-
-const Td = styled.td`
-  padding: 10px;
-  border: 1px solid #ddd;
-  color: black;  // 📌 这里改成黑色字体
-  background: white; // 确保黑色字体对比清晰
-`;
-
-const Button = styled.button`
-  padding: 10px 15px;
-  font-size: 16px;
-  background: #007bff;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 10px;
-
-  &:hover {
-    background: #0056b3;
-  }
-`;
+import { Container, ChartsContainer, ChartBox, Button, Table, Th, Td } from "../styles"; // 👈 导入样式
 
 // 📌 模拟轧制过程数据
 const initialData = [

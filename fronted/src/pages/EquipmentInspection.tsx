@@ -1,26 +1,28 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ReferenceLine, ResponsiveContainer, BarChart, Bar, ScatterChart, Scatter } from "recharts";
+import { Container, ChartsContainer,ChartBox,Button} from "../styles";
 
-// 📌 组件样式
-const Container = styled.div`
-  padding: 20px;
-`;
 
-const ChartsContainer = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-`;
+// // 📌 组件样式
+// const Container = styled.div`
+//   padding: 20px;
+// `;
 
-const ChartBox = styled.div`
-  flex: 1;
-  min-width: 300px;
-  background: #1e1e1e;
-  padding: 15px;
-  border-radius: 10px;
-  color: white;
-`;
+// const ChartsContainer = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+//   gap: 20px;
+// `;
+
+// const ChartBox = styled.div`
+//   flex: 1;
+//   min-width: 300px;
+//   background: #1e1e1e;
+//   padding: 15px;
+//   border-radius: 10px;
+//   color: white;
+// `;
 
 const WarningBox = styled.div`
   background: #ff4444;
@@ -31,15 +33,15 @@ const WarningBox = styled.div`
   font-weight: bold;
 `;
 
-const Button = styled.button`
-  padding: 10px;
-  border-radius: 5px;
-  background: #008CBA;
-  color: white;
-  cursor: pointer;
-  border: none;
-  margin-bottom: 10px;
-`;
+// const Button = styled.button`
+//   padding: 10px;
+//   border-radius: 5px;
+//   background: #008CBA;
+//   color: white;
+//   cursor: pointer;
+//   border: none;
+//   margin-bottom: 10px;
+// `;
 
 
 // 📌 初始缺陷数据（3 组输入数据）
@@ -223,7 +225,6 @@ export default function EnhancedEquipmentInspection() {
           </BarChart>
         </ResponsiveContainer>
       </ChartBox>
-      
     </Container>
   );
 }

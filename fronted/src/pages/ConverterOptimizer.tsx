@@ -1,11 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
+import { Container} from "../styles";
 
 // 📌 组件样式
-const Container = styled.div`
-  padding: 20px;
-  color: black;
-`;
+
 
 const Section = styled.div`
   margin-bottom: 20px;

@@ -12,7 +12,7 @@ client = OpenAI(api_key="sk-fe3e823715ef4cbd9afb93a07194e03e", base_url="https:/
 # 用于存储对话历史的全局变量
 messages = []
 
-@app.route('/chat', methods=['POST'])
+@app.route('/api/chat', methods=['POST'])
 def chat():
     global messages
 
