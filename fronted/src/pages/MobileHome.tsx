@@ -57,22 +57,24 @@ const Icon = styled.img`
 
 // 📌 文字
 const Label = styled.div`
-  font-size: 16px;
+  font-size: 12px;
   font-weight: bold;
   color: #555;
 `;
 
 // 📌 功能列表
 const features = [
-  { name: "智能冶金", path: "/smart-steel", icon: "/icons/steel.png" },
-  { name: "气体分析", path: "/gas-analysis", icon: "/icons/gas.png" },
-  { name: "行车调度", path: "/crane-dispatch", icon: "/icons/crane.png" },
-  { name: "设备巡检", path: "/equipment-inspection", icon: "/icons/inspection.png" },
-  { name: "冶金 AI", path: "/metallurgy-ai", icon: "/icons/ai.png" },
-  { name: "轧制控制", path: "/rolling-control", icon: "/icons/rolling.png" },
-  { name: "转炉优化", path: "/converter-optimizer", icon: "/icons/converter.png" },
-  { name: "生产优化", path: "/production-optimizer", icon: "/icons/production.png" },
-  { name: "电力火灾监测", path: "/power-fire-guard", icon: "/icons/fire.png" },
+  { name: "冶金大语言系统", path: "/metallurgy-ai", icon: "/icons/ai.png" },
+  { name: "烟气分析 & 炉温监测", path: "/gas-analysis", icon: "/icons/gas.png" },
+  { name: "智能炼钢", path: "/smart-steel", icon: "/icons/steel.png" },
+  
+  { name: "无人天车调度系统", path: "/crane-dispatch", icon: "/icons/crane.png" },
+  { name: "设备与原材料检测系统", path: "/equipment-inspection", icon: "/icons/inspection.png" },
+  
+  { name: "轧制智能控制系统", path: "/rolling-control", icon: "/icons/rolling.png" },
+  { name: "转炉精细模型控制系统", path: "/converter-optimizer", icon: "/icons/converter.png" },
+  { name: "工厂智能排产系统", path: "/production-optimizer", icon: "/icons/production.png" },
+  { name: "电力火灾预防监测系统", path: "/power-fire-guard", icon: "/icons/fire.png" },
 ];
 
 export default function MobileHome() {

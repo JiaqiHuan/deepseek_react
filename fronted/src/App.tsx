@@ -16,6 +16,10 @@ import ProductionOptimizer from "./pages/ProductionOptimizer";
 import PowerFireGuard from "./pages/PowerFireGuard";
 import MobileHome from "./pages/MobileHome";
 
+import EquipmentList from "./pages/equipment/EquipmentList";
+import EquipmentDetail from "./pages/equipment/EquipmentDetail";
+import EquipmentDashboard from "./pages/equipment/EquipmentDashboard";
+
 // 📌 PC 布局
 const Layout = styled.div`
   display: flex;
@@ -51,6 +55,9 @@ export default function App() {
             <Route path="/converter-optimizer" element={<ConverterOptimizer />} />
             <Route path="/production-optimizer" element={<ProductionOptimizer />} />
             <Route path="/power-fire-guard" element={<PowerFireGuard />} />
+            <Route path="/equipment/Dashboard" element={<EquipmentDashboard />} />
+            <Route path="/equipment/:category" element={<EquipmentList />} />
+            <Route path="/equipment/:category/:id" element={<EquipmentDetail />} />
           </Routes>
           </MobileContentWrapper>
         </>
@@ -71,6 +78,9 @@ export default function App() {
               <Route path="/converter-optimizer" element={<ConverterOptimizer />} />
               <Route path="/production-optimizer" element={<ProductionOptimizer />} />
               <Route path="/power-fire-guard" element={<PowerFireGuard />} />
+              <Route path="/equipment/Dashboard" element={<EquipmentDashboard />} />
+            <Route path="/equipment/:category" element={<EquipmentList />} />
+            <Route path="/equipment/:category/:id" element={<EquipmentDetail />} />
             </Routes>
           </Content>
         </Layout>

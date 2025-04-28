@@ -1,0 +1,44 @@
+{
+    "system": "flue_gas_analysis",
+    "timestamp": "2023-03-30T15:00:00Z",
+    "data": [
+      {
+        "name": "SO2 浓度",
+        "unit": "ppm",
+        "readings": [
+          {"time": "14:00", "value": 82},
+          {"time": "14:10", "value": 85},
+          {"time": "14:20", "value": 87},
+          {"time": "14:30", "value": 84},
+          {"time": "14:40", "value": 86},
+          {"time": "14:50", "value": 83}
+        ],
+        "statistics": {
+          "average": 84.5,
+          "max": 87,
+          "min": 82,
+          "trend": "stable",
+          "alert": false
+        }
+      },
+      {
+        "name": "CO2 浓度",
+        "unit": "%",
+        "readings": [
+          {"time": "14:00", "value": 18.2},
+          {"time": "14:10", "value": 18.5},
+          {"time": "14:20", "value": 18.7},
+          {"time": "14:30", "value": 18.4},
+          {"time": "14:40", "value": 18.6},
+          {"time": "14:50", "value": 18.3}
+        ],
+        "statistics": {
+          "average": 18.45,
+          "max": 18.7,
+          "min": 18.2,
+          "trend": "stable",
+          "alert": false
+        }
+      }
+    ]
+  }

@@ -97,15 +97,15 @@ export default function MobileNavbar() {
         <MenuButton onClick={() => setMenuOpen((prev) => !prev)}>☰</MenuButton>
         <DropdownMenu isOpen={menuOpen}>
           <MenuItem to="/">🏠 首页</MenuItem>
-          <MenuItem to="/smart-steel">🔥 智能冶金</MenuItem>
-          <MenuItem to="/gas-analysis">💨 气体分析</MenuItem>
-          <MenuItem to="/crane-dispatch">🚛 行车调度</MenuItem>
-          <MenuItem to="/equipment-inspection">🔍 设备巡检</MenuItem>
-          <MenuItem to="/metallurgy-ai">🤖 冶金 AI</MenuItem>
-          <MenuItem to="/rolling-control">⚙️ 轧制控制</MenuItem>
-          <MenuItem to="/converter-optimizer">🛠️ 转炉优化</MenuItem>
-          <MenuItem to="/production-optimizer">📊 生产优化</MenuItem>
-          <MenuItem to="/power-fire-guard">⚡ 电力火灾监测</MenuItem>
+          <MenuItem to="/metallurgy-ai">🧠 冶金大语言系统</MenuItem>
+          <MenuItem to="/gas-analysis">🔥 烟气分析 & 炉温监测</MenuItem>
+          <MenuItem to="/smart-steel">⚙️ 智能炼钢</MenuItem>
+          <MenuItem to="/crane-dispatch">📊 无人天车调度系统</MenuItem>
+          <MenuItem to="/equipment-inspection">🔍 设备与原材料检测系统</MenuItem>
+          <MenuItem to="/rolling-control">🛠 轧制智能控制系统</MenuItem>
+          <MenuItem to="/converter-optimizer">🔥 转炉精细模型控制系统</MenuItem>
+          <MenuItem to="/production-optimizer">🧠 工厂智能排产系统</MenuItem>
+          <MenuItem to="/power-fire-guard">🔥 电力火灾预防监测系统</MenuItem>  
         </DropdownMenu>
       </div>
     </NavbarContainer>
