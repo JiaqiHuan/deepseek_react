@@ -521,11 +521,11 @@ export default function MetallurgyAI() {
       console.log(data);
       
       // 假设后端返回的是我们需要的格式
-      if (data.system && data.data) {
-        setGasData(data);
-      } else {
-        throw new Error("返回数据格式不符合预期");
-      }
+      // if (data.system && data.data) {
+      //   setGasData(data);
+      // } else {
+      //   throw new Error("返回数据格式不符合预期");
+      // }
     } catch (err) {
       setError("获取数据失败，请稍后重试！");
     } finally {
