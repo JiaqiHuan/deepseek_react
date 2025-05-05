@@ -1,0 +1,8 @@
+# 忽略 Python 虚拟环境
+venv/
+
+# 忽略 Python 缓存
+__pycache__/
+*.pyc
+
+node_modules/
